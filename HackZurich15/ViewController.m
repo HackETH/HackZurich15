@@ -23,7 +23,7 @@
 }
 
 - (void)pulse {
-    UIImageView *ring =[[UIImageView alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2-100,self.view.frame.size.height/2-100,200,200)];
+    UIImageView *ring =[[UIImageView alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2-116,self.view.frame.size.height/2-116,232,232)];
     ring.image=[UIImage imageNamed:@"Ring"];
     [self.view addSubview:ring];
     [UIView animateWithDuration:1.0 delay:0 options:UIViewAnimationOptionCurveLinear  animations:^{

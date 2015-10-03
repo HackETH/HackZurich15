@@ -20,15 +20,15 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XAo-Hr-rfp">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <animations/>
-                                <color key="backgroundColor" red="0.15317170516304346" green="0.15317170516304346" blue="0.15317170516304346" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.085406759510869512" green="0.085406759510869512" blue="0.085406759510869512" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fVA-oW-YRI">
-                                <rect key="frame" x="277" y="285" width="46" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fVA-oW-YRI">
+                                <rect key="frame" x="156" y="183" width="288" height="234"/>
                                 <animations/>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" image="Button"/>
                                 <connections>
                                     <action selector="buttonpress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="aUh-AL-wm3"/>
                                 </connections>
@@ -51,4 +51,7 @@
             <point key="canvasLocation" x="305" y="429"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Button" width="234" height="234"/>
+    </resources>
 </document>
