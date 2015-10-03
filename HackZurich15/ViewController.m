@@ -122,6 +122,10 @@ BOOL looper[numberOfTypes][(int)(roundTime/refreshInterval)];
 
 - (void)playSound:(int) soundType {
     [self pulse];
+    dispatch_async(_metronomeQueue, ^{
+        [[AudioSamplePlayer sharedInstance] playAudioSample:@"snares"];
+
+    });
 }
 
 - (void)recordSound {
