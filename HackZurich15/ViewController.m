@@ -41,7 +41,7 @@
 
 #define numberOfTypes ((int) 6)
 #define maxNumberOfBars (int)8
-#define maxNumberOfHitsPerBar (int)256
+#define maxNumberOfHitsPerBar (int)2048
 #define bpmStep ((int)10)
 
 // End
@@ -122,6 +122,8 @@ BOOL looper[numberOfTypes][(int)(maxNumberOfBars*maxNumberOfHitsPerBar)];
    
     
     // Do any additional setup after loading the view, typically from a nib.
+    [[AudioSamplePlayer sharedInstance] preloadAudioSample:@"snares"];
+        [[AudioSamplePlayer sharedInstance] preloadAudioSample:@"tick"];
     [[AudioSamplePlayer sharedInstance] preloadAudioSample:@"Sound0"];
     [[AudioSamplePlayer sharedInstance] preloadAudioSample:@"Sound1"];
     [[AudioSamplePlayer sharedInstance] preloadAudioSample:@"Sound2"];

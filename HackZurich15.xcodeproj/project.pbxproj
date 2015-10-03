@@ -67,6 +67,7 @@
 		87EF2FA41BBF57D8005F886F /* snare.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = snare.wav; sourceTree = "<group>"; };
 		87EF2FA61BBF6225005F886F /* AudioSamplePlayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AudioSamplePlayer.h; sourceTree = "<group>"; };
 		87EF2FA71BBF6230005F886F /* AudioSamplePlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioSamplePlayer.m; sourceTree = "<group>"; };
+		87EF2FA91BBF652E005F886F /* out.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = out.caf; sourceTree = "<group>"; };
 		D04EDE511BBF64D7000D3CD5 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		D04EDE531BC0548B000D3CD5 /* Sound0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Sound0.caf; sourceTree = "<group>"; };
 		D04EDE551BC055AB000D3CD5 /* Sound1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Sound1.caf; sourceTree = "<group>"; };
@@ -143,6 +144,8 @@
 				87EF2FA41BBF57D8005F886F /* snare.wav */,
 				87EF2F7A1BBF4A90005F886F /* LaunchScreen.storyboard */,
 				87EF2F7D1BBF4A90005F886F /* Info.plist */,
+				873531241BC04FB700B1DEF6 /* Resources */,
+				87EF2FA91BBF652E005F886F /* out.caf */,
 				D04EDE531BC0548B000D3CD5 /* Sound0.caf */,
 				D04EDE551BC055AB000D3CD5 /* Sound1.caf */,
 				D04EDE561BC055AB000D3CD5 /* Sound2.caf */,
@@ -290,6 +293,7 @@
 				D04EDE5E1BC055AB000D3CD5 /* Sound5.caf in Resources */,
 				87EF2F791BBF4A90005F886F /* Assets.xcassets in Resources */,
 				87E9E4F01BBFE952008208D9 /* snares.caf in Resources */,
+				873531261BC0505800B1DEF6 /* tick.caf in Resources */,
 				D04EDE5D1BC055AB000D3CD5 /* Sound4.caf in Resources */,
 				87EF2FA51BBF57D8005F886F /* snare.wav in Resources */,
 				D04EDE541BC0548B000D3CD5 /* Sound0.caf in Resources */,
