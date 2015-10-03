@@ -16,6 +16,7 @@
 		87EF2F871BBF4A90005F886F /* HackZurich15Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 87EF2F861BBF4A90005F886F /* HackZurich15Tests.m */; };
 		87EF2F921BBF4A90005F886F /* HackZurich15UITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 87EF2F911BBF4A90005F886F /* HackZurich15UITests.m */; };
 		87EF2FA51BBF57D8005F886F /* snare.wav in Resources */ = {isa = PBXBuildFile; fileRef = 87EF2FA41BBF57D8005F886F /* snare.wav */; settings = {ASSET_TAGS = (); }; };
+		D04EDE521BBF64D7000D3CD5 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D04EDE511BBF64D7000D3CD5 /* CoreMotion.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		87EF2F911BBF4A90005F886F /* HackZurich15UITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HackZurich15UITests.m; sourceTree = "<group>"; };
 		87EF2F931BBF4A90005F886F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		87EF2FA41BBF57D8005F886F /* snare.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = snare.wav; sourceTree = "<group>"; };
+		D04EDE511BBF64D7000D3CD5 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D04EDE521BBF64D7000D3CD5 /* CoreMotion.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +86,7 @@
 		87EF2F601BBF4A90005F886F = {
 			isa = PBXGroup;
 			children = (
+				D04EDE511BBF64D7000D3CD5 /* CoreMotion.framework */,
 				87EF2F6B1BBF4A90005F886F /* HackZurich15 */,
 				87EF2F851BBF4A90005F886F /* HackZurich15Tests */,
 				87EF2F901BBF4A90005F886F /* HackZurich15UITests */,
@@ -500,6 +504,7 @@
 				87EF2F981BBF4A90005F886F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		87EF2F991BBF4A90005F886F /* Build configuration list for PBXNativeTarget "HackZurich15Tests" */ = {
 			isa = XCConfigurationList;
@@ -508,6 +513,7 @@
 				87EF2F9B1BBF4A90005F886F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		87EF2F9C1BBF4A90005F886F /* Build configuration list for PBXNativeTarget "HackZurich15UITests" */ = {
 			isa = XCConfigurationList;
@@ -516,6 +522,7 @@
 				87EF2F9E1BBF4A90005F886F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

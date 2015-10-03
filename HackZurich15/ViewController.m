@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import <AVFoundation/AVFoundation.h>
+#import <CoreMotion/CoreMotion.h>
 @interface ViewController ()
 @property AVAudioPlayer *snareAudioPlayer;
 @property (weak, nonatomic) IBOutlet UIButton *mainButton;
@@ -15,8 +16,21 @@
 
 @end
 
+CMMotionManager *motionManager;
 bool spinning;
 double roundTime = 10.0;
+double refreshInterval = 0.01;
+double x_prev;
+double y_prev;
+double z_prev;
+BOOL firstWait;
+BOOL recording;
+int currentType = 0;
+int numberOfTypes = 5;
+int currentBar = 0;
+BOOL looper[5][10*100];
+
+
 
 @implementation ViewController
 
@@ -29,6 +43,20 @@ double roundTime = 10.0;
     [self.snareAudioPlayer setVolume:0.0];
     [self.snareAudioPlayer play];
     
+    
+    
+    
+    firstWait = false;
+    recording = false;
+    [NSTimer scheduledTimerWithTimeInterval:refreshInterval target:self selector:@selector(getValues:) userInfo:nil repeats:YES];
+    
+    
+    [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(setValues:) userInfo:nil repeats:NO];
+    
+    motionManager = [[CMMotionManager alloc] init];
+    
+    motionManager.accelerometerUpdateInterval = refreshInterval;  // 20 Hz
+    [motionManager startAccelerometerUpdates];
     
    
     
@@ -68,15 +96,68 @@ double roundTime = 10.0;
 }
 - (void) stopSpinning:(NSTimer *) timer {
     spinning = false;
+    currentType++;
 }
 - (IBAction)buttonpress:(id)sender {
     [self startSpinning];
     [self pulse];
+    [self recordSound];
 }
+
+- (void)playSound:(int *) soundType {
+    [self pulse];
+    
+}
+
+- (void)recordSound {
+    looper[currentType][currentBar] = true;
+    
+}
+
+
+
+-(void) getValues:(NSTimer *) timer {
+    if (currentBar<roundTime/refreshInterval) {
+        currentBar++;
+    }
+    else {
+        currentBar=0;
+    }
+    
+    for (int x=0;x<numberOfTypes;x++) {
+        if (looper[x][currentBar]) {
+            [self playSound:&x];
+        }
+    }
+    
+    
+    
+//    if (firstWait && fabs(motionManager.accelerometerData.acceleration.z-z_prev)>0.03) {
+//        [self startSpinning];
+//        [self pulse];
+//        
+//    }
+    
+   
+    
+    
+}
+-(void) setValues:(NSTimer *) timer {
+    x_prev = motionManager.accelerometerData.acceleration.x;
+    y_prev = motionManager.accelerometerData.acceleration.y;
+    z_prev = motionManager.accelerometerData.acceleration.z;
+    firstWait = true;
+    
+    
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
+
 
 @end
