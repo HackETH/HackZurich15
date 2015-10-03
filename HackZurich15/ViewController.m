@@ -83,7 +83,11 @@ BOOL looper[numberOfTypes][(int)(maxNumberOfBars*maxNumberOfHitsPerBar)];
     [self.snareAudioPlayer setVolume:0.0];
     [self.snareAudioPlayer play];
     [self.snareAudioPlayer setVolume:1.0];*/
-    
+    self.circle5.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.5, 0.5);
+    self.circle1.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.5, 0.5);
+    self.circle2.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.5, 0.5);
+    self.circle3.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.5, 0.5);
+    self.circle4.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.5, 0.5);
     
     
     
@@ -107,9 +111,9 @@ BOOL looper[numberOfTypes][(int)(maxNumberOfBars*maxNumberOfHitsPerBar)];
     
 }
 
-- (void)pulse {
+- (void)pulse:(int)num {
     UIImageView *ring =[[UIImageView alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2-116,self.view.frame.size.height/2-116,232,232)];
-    ring.image=[UIImage imageNamed:@"Ring"];
+    ring.image=[UIImage imageNamed:[NSString stringWithFormat:@"Ring%d",num]];
     [self.view addSubview:ring];
     [UIView animateWithDuration:1.0 delay:0 options:UIViewAnimationOptionCurveLinear  animations:^{
         [ring setFrame:CGRectMake(self.view.frame.size.width/2-250,self.view.frame.size.height/2-250,500,500)];
@@ -152,6 +156,8 @@ BOOL looper[numberOfTypes][(int)(maxNumberOfBars*maxNumberOfHitsPerBar)];
 - (void) stopSpinning:(NSTimer *) timer {
     spinning = false;
     currentType++;
+    [self animateButtons:currentType];
+    [self.mainButton setImage:[UIImage imageNamed:[NSString stringWithFormat:@"Button%d",currentType]]forState:UIControlStateNormal];
 }
 - (IBAction)buttonpress:(id)sender {
     [self startSpinningWith:0.0f];
@@ -161,7 +167,7 @@ BOOL looper[numberOfTypes][(int)(maxNumberOfBars*maxNumberOfHitsPerBar)];
 }
 
 - (void)playSound:(int) soundType {
-    [self pulse];
+    [self pulse:soundType];
     dispatch_async(_metronomeQueue, ^{
         [[AudioSamplePlayer sharedInstance] playAudioSample:@"snares"];
 
@@ -224,6 +230,99 @@ BOOL looper[numberOfTypes][(int)(maxNumberOfBars*maxNumberOfHitsPerBar)];
     firstWait = true;
     
     
+}
+
+- (IBAction)bpmUp:(id)sender {
+}
+- (IBAction)bpmDown:(id)sender {
+}
+
+
+-(void) deleteTrack:(int)num {
+    for (int x=0;x<(int)roundTime/refreshInterval;x++) {
+        looper[num][x] = false;
+    }
+}
+- (IBAction)circlePress0:(id)sender {
+    [self animateButtons:0];
+    currentType = 0;
+    [self deleteTrack:0];
+    [self.mainButton setImage:[UIImage imageNamed:[NSString stringWithFormat:@"Button%d",0]]forState:UIControlStateNormal];
+}
+- (IBAction)circlePress1:(id)sender {
+   [self animateButtons:1];
+    currentType = 1;
+    [self deleteTrack:1];
+    [self.mainButton setImage:[UIImage imageNamed:[NSString stringWithFormat:@"Button%d",1]]forState:UIControlStateNormal];
+}
+- (IBAction)circlePress2:(id)sender {
+    [self animateButtons:2];
+    currentType = 2;
+    [self deleteTrack:2];
+    [self.mainButton setImage:[UIImage imageNamed:[NSString stringWithFormat:@"Button%d",2]]forState:UIControlStateNormal];
+}
+- (IBAction)circlePress3:(id)sender {
+    [self animateButtons:3];
+    currentType = 3;
+    [self deleteTrack:3];
+    [self.mainButton setImage:[UIImage imageNamed:[NSString stringWithFormat:@"Button%d",3]]forState:UIControlStateNormal];
+}
+- (IBAction)circlePress4:(id)sender {
+    [self animateButtons:4];
+    currentType = 4;
+    [self deleteTrack:4];
+    [self.mainButton setImage:[UIImage imageNamed:[NSString stringWithFormat:@"Button%d",4]]forState:UIControlStateNormal];
+}
+- (IBAction)circlePress5:(id)sender {
+    [self animateButtons:5];
+    currentType = 5;
+    [self deleteTrack:5];
+    [self.mainButton setImage:[UIImage imageNamed:[NSString stringWithFormat:@"Button%d",5]]forState:UIControlStateNormal];
+}
+
+- (void)animateButtons:(int)num {
+    [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:0.4 initialSpringVelocity:0.7  options:nil  animations:^{
+        if (num!=0) {
+            self.circle0.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.5, 0.5);
+        }
+        else {
+            self.circle0.transform = CGAffineTransformScale(CGAffineTransformIdentity, 1.0, 1.0);
+        }
+        if (num!=1) {
+            self.circle1.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.5, 0.5);
+        }
+        else {
+            self.circle1.transform = CGAffineTransformScale(CGAffineTransformIdentity, 1.0, 1.0);
+        }
+        if (num!=2) {
+            self.circle2.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.5, 0.5);
+        }
+        else {
+            self.circle2.transform = CGAffineTransformScale(CGAffineTransformIdentity, 1.0, 1.0);
+        }
+        if (num!=3) {
+            self.circle3.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.5, 0.5);
+        }
+        else {
+            self.circle3.transform = CGAffineTransformScale(CGAffineTransformIdentity, 1.0, 1.0);
+        }
+        if (num!=4) {
+            self.circle4.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.5, 0.5);
+        }
+        else {
+            self.circle4.transform = CGAffineTransformScale(CGAffineTransformIdentity, 1.0, 1.0);
+        }
+        if (num!=5) {
+            self.circle5.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.5, 0.5);
+        }
+        else {
+            self.circle5.transform = CGAffineTransformScale(CGAffineTransformIdentity, 1.0, 1.0);
+        }
+       
+    } completion:^(BOOL finished) {
+        
+        //code for completion
+    }];
 }
 
 
