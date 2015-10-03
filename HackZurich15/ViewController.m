@@ -16,19 +16,24 @@
 
 @end
 
+// Constants
+
+#define numberOfTypes ((int) 5)
+#define roundTime ((double) 10.0)
+#define refreshInterval ((double) 0.01)
+
+// End
+
 CMMotionManager *motionManager;
 bool spinning;
-double roundTime = 10.0;
-double refreshInterval = 0.01;
 double x_prev;
 double y_prev;
 double z_prev;
 BOOL firstWait;
 BOOL recording;
 int currentType = 0;
-int numberOfTypes = 5;
 int currentBar = 0;
-BOOL looper[5][10*100];
+BOOL looper[numberOfTypes][(int)(roundTime/refreshInterval)];
 
 
 
@@ -112,6 +117,21 @@ BOOL looper[5][10*100];
 - (void)recordSound {
     looper[currentType][currentBar] = true;
     
+}
+
+- (void)deleteLastTrack {
+    
+    if (spinning) {
+        
+    }
+    else {
+        currentBar--;
+        for (int x=0;x<roundTime/refreshInterval;x++) {
+            looper[x][currentBar]=false;
+        }
+    }
+    
+   
 }
 
 
