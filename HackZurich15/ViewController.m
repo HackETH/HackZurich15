@@ -22,6 +22,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *circle3;
 @property (weak, nonatomic) IBOutlet UIButton *circle4;
 @property (weak, nonatomic) IBOutlet UIButton *circle5;
+@property (weak, nonatomic) IBOutlet UILabel *bpmLabel;
 
 
 
@@ -196,6 +197,12 @@ BOOL looper[numberOfTypes][(int)(roundTime/refreshInterval)];
     
     
 }
+
+- (IBAction)bpmUp:(id)sender {
+}
+- (IBAction)bpmDown:(id)sender {
+}
+
 
 -(void) deleteTrack:(int)num {
     for (int x=0;x<(int)roundTime/refreshInterval;x++) {

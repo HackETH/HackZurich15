@@ -99,27 +99,67 @@
                                     <action selector="circlePress5:" destination="BYZ-38-t0r" eventType="touchUpInside" id="I2P-mU-3dE"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dof-Ht-8vD">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <animations/>
+                                <state key="normal" image="BtnUp"/>
+                                <variation key="heightClass=regular" misplaced="YES">
+                                    <rect key="frame" x="41" y="542" width="20" height="22"/>
+                                </variation>
+                                <connections>
+                                    <action selector="bpmUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ytG-Di-diM"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LxQ-0R-tFk">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <animations/>
+                                <state key="normal" image="BtnDown"/>
+                                <variation key="heightClass=regular" misplaced="YES">
+                                    <rect key="frame" x="41" y="590" width="20" height="22"/>
+                                </variation>
+                                <connections>
+                                    <action selector="bpmDown:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WbH-DI-mn8"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="180" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sQu-8A-ilN">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <color key="textColor" red="0.94338060461956519" green="0.94338060461956519" blue="0.94338060461956519" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular" misplaced="YES">
+                                    <rect key="frame" x="30" y="567" width="42" height="21"/>
+                                </variation>
+                            </label>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="hua-Er-aEG" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="66" id="0nf-pi-bvd"/>
+                            <constraint firstItem="LxQ-0R-tFk" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="21" id="1ii-GO-CFS"/>
                             <constraint firstItem="fVA-oW-YRI" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="280-lH-fNr"/>
                             <constraint firstItem="taW-13-Voc" firstAttribute="leading" secondItem="cEu-1U-JLq" secondAttribute="trailing" constant="41" id="3kS-8m-2kP"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="XAo-Hr-rfp" secondAttribute="bottom" id="41L-7q-oPL"/>
+                            <constraint firstItem="sQu-8A-ilN" firstAttribute="top" secondItem="Dof-Ht-8vD" secondAttribute="bottom" constant="3" id="Bit-Eg-S5S"/>
                             <constraint firstItem="hua-Er-aEG" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="110" id="C66-P2-JZk"/>
                             <constraint firstItem="XAo-Hr-rfp" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" id="DJ0-wv-SZN"/>
+                            <constraint firstItem="Dof-Ht-8vD" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="21" id="DJk-hM-mzD"/>
+                            <constraint firstItem="LxQ-0R-tFk" firstAttribute="top" secondItem="Dof-Ht-8vD" secondAttribute="bottom" constant="26" id="FQS-P0-cQf"/>
                             <constraint firstItem="fVA-oW-YRI" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Fgc-ib-EzV"/>
                             <constraint firstItem="e9B-Vy-Gyn" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="149" id="H3M-Sw-CrC"/>
+                            <constraint firstItem="Dof-Ht-8vD" firstAttribute="top" secondItem="e9B-Vy-Gyn" secondAttribute="bottom" constant="373" id="Hql-lG-rOF"/>
                             <constraint firstItem="e9B-Vy-Gyn" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="5" id="J6X-GJ-Wk5"/>
                             <constraint firstItem="AS0-qc-cFq" firstAttribute="leading" secondItem="e9B-Vy-Gyn" secondAttribute="trailing" constant="285" id="Lhp-4i-eVI"/>
                             <constraint firstItem="taW-13-Voc" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="95" id="Ljy-fs-WAx"/>
                             <constraint firstItem="njX-U9-4aF" firstAttribute="leading" secondItem="taW-13-Voc" secondAttribute="trailing" constant="41" id="N1N-hv-YXl"/>
                             <constraint firstItem="XAo-Hr-rfp" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="VfZ-pB-NGV"/>
                             <constraint firstItem="cEu-1U-JLq" firstAttribute="leading" secondItem="hua-Er-aEG" secondAttribute="trailing" constant="41" id="dMZ-s4-ebk"/>
+                            <constraint firstItem="LxQ-0R-tFk" firstAttribute="top" secondItem="sQu-8A-ilN" secondAttribute="bottom" constant="2" id="dXI-ki-HTq"/>
                             <constraint firstItem="njX-U9-4aF" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="110" id="g56-Tb-ZmP"/>
+                            <constraint firstItem="sQu-8A-ilN" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="10" id="k4f-mI-mQe"/>
                             <constraint firstItem="AS0-qc-cFq" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="149" id="muJ-nB-Xdh"/>
                             <constraint firstItem="cEu-1U-JLq" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="95" id="nKr-AF-xLW"/>
+                            <constraint firstItem="LxQ-0R-tFk" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="21" id="pDp-1n-BvV"/>
                             <constraint firstAttribute="trailingMargin" secondItem="XAo-Hr-rfp" secondAttribute="trailing" constant="-20" id="wiE-er-h3b"/>
                         </constraints>
                         <variation key="default">
@@ -130,6 +170,9 @@
                                 <exclude reference="taW-13-Voc"/>
                                 <exclude reference="njX-U9-4aF"/>
                                 <exclude reference="AS0-qc-cFq"/>
+                                <exclude reference="Dof-Ht-8vD"/>
+                                <exclude reference="LxQ-0R-tFk"/>
+                                <exclude reference="sQu-8A-ilN"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="0nf-pi-bvd"/>
@@ -144,6 +187,14 @@
                                 <exclude reference="g56-Tb-ZmP"/>
                                 <exclude reference="Lhp-4i-eVI"/>
                                 <exclude reference="muJ-nB-Xdh"/>
+                                <exclude reference="DJk-hM-mzD"/>
+                                <exclude reference="Hql-lG-rOF"/>
+                                <exclude reference="Bit-Eg-S5S"/>
+                                <exclude reference="k4f-mI-mQe"/>
+                                <exclude reference="1ii-GO-CFS"/>
+                                <exclude reference="FQS-P0-cQf"/>
+                                <exclude reference="dXI-ki-HTq"/>
+                                <exclude reference="pDp-1n-BvV"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular">
@@ -154,6 +205,9 @@
                                 <include reference="taW-13-Voc"/>
                                 <include reference="njX-U9-4aF"/>
                                 <include reference="AS0-qc-cFq"/>
+                                <include reference="Dof-Ht-8vD"/>
+                                <include reference="LxQ-0R-tFk"/>
+                                <include reference="sQu-8A-ilN"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="0nf-pi-bvd"/>
@@ -168,11 +222,20 @@
                                 <include reference="g56-Tb-ZmP"/>
                                 <include reference="Lhp-4i-eVI"/>
                                 <include reference="muJ-nB-Xdh"/>
+                                <include reference="DJk-hM-mzD"/>
+                                <include reference="Hql-lG-rOF"/>
+                                <include reference="Bit-Eg-S5S"/>
+                                <include reference="k4f-mI-mQe"/>
+                                <exclude reference="1ii-GO-CFS"/>
+                                <exclude reference="FQS-P0-cQf"/>
+                                <include reference="dXI-ki-HTq"/>
+                                <include reference="pDp-1n-BvV"/>
                             </mask>
                         </variation>
                     </view>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <connections>
+                        <outlet property="bpmLabel" destination="sQu-8A-ilN" id="ack-7X-Fhy"/>
                         <outlet property="circle0" destination="e9B-Vy-Gyn" id="9Bu-DG-zEH"/>
                         <outlet property="circle1" destination="hua-Er-aEG" id="nFH-yP-2ag"/>
                         <outlet property="circle2" destination="cEu-1U-JLq" id="2y3-g6-ocE"/>
@@ -188,6 +251,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="BtnDown" width="20" height="10"/>
+        <image name="BtnUp" width="20" height="10"/>
         <image name="Button" width="234" height="234"/>
         <image name="Circle0" width="20" height="20"/>
         <image name="Circle1" width="20" height="20"/>
