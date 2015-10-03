@@ -7,15 +7,20 @@
 //
 
 #import "ViewController.h"
-
+#import <AVFoundation/AVFoundation.h>
 @interface ViewController ()
-
+@property AVAudioPlayer *snareAudioPlayer;
 @end
 
 @implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    NSURL *soundURL = [[NSBundle mainBundle] URLForResource:@"snare"
+                                              withExtension:@"wav"];
+    self.snareAudioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:soundURL error:nil];
+    [self.snareAudioPlayer setVolume:0.0];
+    [self.snareAudioPlayer play];
     // Do any additional setup after loading the view, typically from a nib.
 }
 
