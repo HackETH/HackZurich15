@@ -107,11 +107,11 @@ BOOL looper[numberOfTypes][(int)(roundTime/refreshInterval)];
     [self startSpinning];
     [self pulse];
     [self recordSound];
+    [self playSound:currentType];
 }
 
 - (void)playSound:(int *) soundType {
     [self pulse];
-    
 }
 
 - (void)recordSound {

@@ -45,6 +45,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="XAo-Hr-rfp" secondAttribute="trailing" constant="-20" id="wiE-er-h3b"/>
                         </constraints>
                     </view>
+                    <nil key="simulatedStatusBarMetrics"/>
                     <connections>
                         <outlet property="mainButton" destination="fVA-oW-YRI" id="CNP-jG-4bS"/>
                     </connections>
