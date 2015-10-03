@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -37,9 +38,6 @@
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <animations/>
                                 <state key="normal" image="Circle0"/>
-                                <variation key="heightClass=regular" misplaced="YES">
-                                    <rect key="frame" x="25" y="149" width="20" height="20"/>
-                                </variation>
                                 <connections>
                                     <action selector="circlePress0:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jPO-d7-d3n"/>
                                 </connections>
@@ -48,9 +46,6 @@
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <animations/>
                                 <state key="normal" image="Circle1"/>
-                                <variation key="heightClass=regular" misplaced="YES">
-                                    <rect key="frame" x="86" y="110" width="20" height="20"/>
-                                </variation>
                                 <connections>
                                     <action selector="circlePress1:" destination="BYZ-38-t0r" eventType="touchUpInside" id="IKB-qz-YJN"/>
                                 </connections>
@@ -59,9 +54,6 @@
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <animations/>
                                 <state key="normal" image="Circle2"/>
-                                <variation key="heightClass=regular" misplaced="YES">
-                                    <rect key="frame" x="147" y="95" width="20" height="20"/>
-                                </variation>
                                 <connections>
                                     <action selector="circlePress2:" destination="BYZ-38-t0r" eventType="touchUpInside" id="L9o-No-EmY"/>
                                 </connections>
@@ -70,9 +62,6 @@
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <animations/>
                                 <state key="normal" image="Circle3"/>
-                                <variation key="heightClass=regular" misplaced="YES">
-                                    <rect key="frame" x="208" y="95" width="20" height="20"/>
-                                </variation>
                                 <connections>
                                     <action selector="circlePress3:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ymk-tL-UuB"/>
                                 </connections>
@@ -81,9 +70,6 @@
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <animations/>
                                 <state key="normal" image="Circle4"/>
-                                <variation key="heightClass=regular" misplaced="YES">
-                                    <rect key="frame" x="269" y="110" width="20" height="20"/>
-                                </variation>
                                 <connections>
                                     <action selector="circlePress4:" destination="BYZ-38-t0r" eventType="touchUpInside" id="coZ-O1-rUe"/>
                                 </connections>
@@ -92,9 +78,6 @@
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <animations/>
                                 <state key="normal" image="Circle5"/>
-                                <variation key="heightClass=regular" misplaced="YES">
-                                    <rect key="frame" x="330" y="149" width="20" height="20"/>
-                                </variation>
                                 <connections>
                                     <action selector="circlePress5:" destination="BYZ-38-t0r" eventType="touchUpInside" id="I2P-mU-3dE"/>
                                 </connections>
@@ -103,9 +86,6 @@
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <animations/>
                                 <state key="normal" image="BtnUp"/>
-                                <variation key="heightClass=regular" misplaced="YES">
-                                    <rect key="frame" x="41" y="542" width="20" height="22"/>
-                                </variation>
                                 <connections>
                                     <action selector="bpmUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ytG-Di-diM"/>
                                 </connections>
@@ -114,21 +94,31 @@
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <animations/>
                                 <state key="normal" image="BtnDown"/>
-                                <variation key="heightClass=regular" misplaced="YES">
-                                    <rect key="frame" x="41" y="590" width="20" height="22"/>
-                                </variation>
                                 <connections>
                                     <action selector="bpmDown:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WbH-DI-mn8"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="180" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sQu-8A-ilN">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sQu-8A-ilN">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                 <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="42" id="0yA-QJ-liu"/>
+                                    <constraint firstAttribute="height" constant="26" id="BhE-I0-9cW"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <color key="textColor" red="0.94338060461956519" green="0.94338060461956519" blue="0.94338060461956519" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
-                                <variation key="heightClass=regular" misplaced="YES">
-                                    <rect key="frame" x="30" y="567" width="42" height="21"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="0yA-QJ-liu"/>
+                                        <exclude reference="BhE-I0-9cW"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular">
+                                    <mask key="constraints">
+                                        <include reference="0yA-QJ-liu"/>
+                                        <include reference="BhE-I0-9cW"/>
+                                    </mask>
                                 </variation>
                             </label>
                         </subviews>
@@ -175,26 +165,26 @@
                                 <exclude reference="sQu-8A-ilN"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="0nf-pi-bvd"/>
-                                <exclude reference="C66-P2-JZk"/>
-                                <exclude reference="H3M-Sw-CrC"/>
-                                <exclude reference="J6X-GJ-Wk5"/>
-                                <exclude reference="dMZ-s4-ebk"/>
-                                <exclude reference="nKr-AF-xLW"/>
-                                <exclude reference="3kS-8m-2kP"/>
-                                <exclude reference="Ljy-fs-WAx"/>
-                                <exclude reference="N1N-hv-YXl"/>
-                                <exclude reference="g56-Tb-ZmP"/>
                                 <exclude reference="Lhp-4i-eVI"/>
                                 <exclude reference="muJ-nB-Xdh"/>
                                 <exclude reference="DJk-hM-mzD"/>
                                 <exclude reference="Hql-lG-rOF"/>
-                                <exclude reference="Bit-Eg-S5S"/>
-                                <exclude reference="k4f-mI-mQe"/>
                                 <exclude reference="1ii-GO-CFS"/>
                                 <exclude reference="FQS-P0-cQf"/>
                                 <exclude reference="dXI-ki-HTq"/>
                                 <exclude reference="pDp-1n-BvV"/>
+                                <exclude reference="dMZ-s4-ebk"/>
+                                <exclude reference="nKr-AF-xLW"/>
+                                <exclude reference="H3M-Sw-CrC"/>
+                                <exclude reference="J6X-GJ-Wk5"/>
+                                <exclude reference="0nf-pi-bvd"/>
+                                <exclude reference="C66-P2-JZk"/>
+                                <exclude reference="N1N-hv-YXl"/>
+                                <exclude reference="g56-Tb-ZmP"/>
+                                <exclude reference="3kS-8m-2kP"/>
+                                <exclude reference="Ljy-fs-WAx"/>
+                                <exclude reference="Bit-Eg-S5S"/>
+                                <exclude reference="k4f-mI-mQe"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular">
@@ -210,26 +200,26 @@
                                 <include reference="sQu-8A-ilN"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="0nf-pi-bvd"/>
-                                <include reference="C66-P2-JZk"/>
-                                <include reference="H3M-Sw-CrC"/>
-                                <include reference="J6X-GJ-Wk5"/>
-                                <include reference="dMZ-s4-ebk"/>
-                                <include reference="nKr-AF-xLW"/>
-                                <include reference="3kS-8m-2kP"/>
-                                <include reference="Ljy-fs-WAx"/>
-                                <include reference="N1N-hv-YXl"/>
-                                <include reference="g56-Tb-ZmP"/>
                                 <include reference="Lhp-4i-eVI"/>
                                 <include reference="muJ-nB-Xdh"/>
                                 <include reference="DJk-hM-mzD"/>
                                 <include reference="Hql-lG-rOF"/>
-                                <include reference="Bit-Eg-S5S"/>
-                                <include reference="k4f-mI-mQe"/>
                                 <exclude reference="1ii-GO-CFS"/>
                                 <exclude reference="FQS-P0-cQf"/>
                                 <include reference="dXI-ki-HTq"/>
                                 <include reference="pDp-1n-BvV"/>
+                                <include reference="dMZ-s4-ebk"/>
+                                <include reference="nKr-AF-xLW"/>
+                                <include reference="H3M-Sw-CrC"/>
+                                <include reference="J6X-GJ-Wk5"/>
+                                <include reference="0nf-pi-bvd"/>
+                                <include reference="C66-P2-JZk"/>
+                                <include reference="N1N-hv-YXl"/>
+                                <include reference="g56-Tb-ZmP"/>
+                                <include reference="3kS-8m-2kP"/>
+                                <include reference="Ljy-fs-WAx"/>
+                                <include reference="Bit-Eg-S5S"/>
+                                <include reference="k4f-mI-mQe"/>
                             </mask>
                         </variation>
                     </view>
@@ -242,7 +232,9 @@
                         <outlet property="circle3" destination="taW-13-Voc" id="Mox-3i-vjb"/>
                         <outlet property="circle4" destination="njX-U9-4aF" id="xQo-wC-e1a"/>
                         <outlet property="circle5" destination="AS0-qc-cFq" id="Y1B-W7-X9D"/>
+                        <outlet property="downArrowButton" destination="LxQ-0R-tFk" id="cn9-9o-JRJ"/>
                         <outlet property="mainButton" destination="fVA-oW-YRI" id="CNP-jG-4bS"/>
+                        <outlet property="upArrowButton" destination="Dof-Ht-8vD" id="6jM-9V-hXI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

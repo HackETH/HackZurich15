@@ -11,7 +11,9 @@
 #import "AudioSamplePlayer.h"
 #import <CoreMotion/CoreMotion.h>
 @interface ViewController ()
-@property (weak, nonatomic) IBOutlet UIPickerView *pickerView;
+@property (weak, nonatomic) IBOutlet UIButton *upArrowButton;
+@property (weak, nonatomic) IBOutlet UIButton *downArrowButton;
+
 @property AVAudioPlayer *snareAudioPlayer;
 @property AudioSamplePlayer *samplePlayer;
 @property dispatch_queue_t metronomeQueue;
@@ -21,14 +23,26 @@
 @property double roundTime;
 @property int bpm;
 @property int nBars;
+@property BOOL beenHere;
 @property NSTimer *intervalTimer;
+@property (weak, nonatomic) IBOutlet UIButton *circle0;
+@property (weak, nonatomic) IBOutlet UIButton *circle1;
+@property (weak, nonatomic) IBOutlet UIButton *circle2;
+@property (weak, nonatomic) IBOutlet UIButton *circle3;
+@property (weak, nonatomic) IBOutlet UIButton *circle4;
+@property (weak, nonatomic) IBOutlet UIButton *circle5;
+@property (weak, nonatomic) IBOutlet UILabel *bpmLabel;
+@property NSTimer *circleTimer;
+
+
 @end
 
 // Constants
 
-#define numberOfTypes ((int) 5)
-#define maxNumberOfBars 8
-#define maxNumberOfHitsPerBar 128
+#define numberOfTypes ((int) 6)
+#define maxNumberOfBars (int)8
+#define maxNumberOfHitsPerBar (int)256
+#define bpmStep ((int)10)
 
 // End
 
@@ -49,9 +63,11 @@ BOOL looper[numberOfTypes][(int)(maxNumberOfBars*maxNumberOfHitsPerBar)];
 
 -(void)setBpmAndUpdateTimer:(int) bpmVal{
     self.bpm = bpmVal;
-    [self updateSpinning];
+    if (spinning) {
+        [self updateSpinning];
+    }
     [self.intervalTimer invalidate];
-    self.intervalTimer = [NSTimer timerWithTimeInterval:self.refreshInterval target:self selector:@selector(getValues:) userInfo:nil repeats:YES];
+    self.intervalTimer = [NSTimer scheduledTimerWithTimeInterval:self.refreshInterval target:self selector:@selector(getValues:) userInfo:nil repeats:YES];
     
 }
 -(double)roundTime{
@@ -72,10 +88,9 @@ BOOL looper[numberOfTypes][(int)(maxNumberOfBars*maxNumberOfHitsPerBar)];
     [super viewDidLoad];
     self.bpm = 80;
     self.nBars = 2;
-    self.pickerView.dataSource = self;
-    self.pickerView.delegate = self;
     _metronomeQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0);
     spinning = false;
+    self.bpmLabel.text = [NSString stringWithFormat:@"%d", self.bpm];
     /*
     NSURL *soundURL = [[NSBundle mainBundle] URLForResource:@"snare"
                                               withExtension:@"wav"];
@@ -108,7 +123,7 @@ BOOL looper[numberOfTypes][(int)(maxNumberOfBars*maxNumberOfHitsPerBar)];
     
     // Do any additional setup after loading the view, typically from a nib.
     [[AudioSamplePlayer sharedInstance] preloadAudioSample:@"snares"];
-    
+        [[AudioSamplePlayer sharedInstance] preloadAudioSample:@"tick"];
 }
 
 - (void)pulse:(int)num {
@@ -133,37 +148,44 @@ BOOL looper[numberOfTypes][(int)(maxNumberOfBars*maxNumberOfHitsPerBar)];
 
 
 - (void) startSpinningWith:(float) offset {
+    self.upArrowButton.enabled = NO;
+    self.downArrowButton.enabled = NO;
     if (!spinning) {
         
         CABasicAnimation* animation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
         animation.fromValue = [NSNumber numberWithFloat:0.0f+offset];
         animation.toValue = [NSNumber numberWithFloat: 2*M_PI];
-        animation.duration = self.roundTime;
+        animation.duration = self.roundTime*(1 - offset/(2*M_PI));
         
         [self.mainButton.layer addAnimation:animation forKey:@"SpinAnimation"];
         spinning = true;
-        [NSTimer scheduledTimerWithTimeInterval:self.roundTime target:self selector:@selector(stopSpinning:) userInfo:nil repeats:NO];
+        self.circleTimer = [NSTimer scheduledTimerWithTimeInterval:self.roundTime*(1 - offset/(2*M_PI)) target:self selector:@selector(stopSpinning:) userInfo:nil repeats:NO];
     }
     
 }
+
 -(void)updateSpinning{
     float currentOffset = (double)currentHit*2.0f*M_PI/((double)maxNumberOfHitsPerBar*(double)self.nBars);
     NSLog(@"%d",currentHit);
     spinning = false;
+    [self.circleTimer invalidate];
     [self.mainButton.layer removeAllAnimations];
     [self startSpinningWith:currentOffset];
 }
+
 - (void) stopSpinning:(NSTimer *) timer {
     spinning = false;
+    self.upArrowButton.enabled = YES;
+    self.downArrowButton.enabled =YES;
     currentType++;
     [self animateButtons:currentType];
     [self.mainButton setImage:[UIImage imageNamed:[NSString stringWithFormat:@"Button%d",currentType]]forState:UIControlStateNormal];
 }
+
 - (IBAction)buttonpress:(id)sender {
     [self startSpinningWith:0.0f];
-    [self pulse];
-    [self recordSound];
     [self playSound:currentType];
+    [self recordSound];
 }
 
 - (void)playSound:(int) soundType {
@@ -198,13 +220,17 @@ BOOL looper[numberOfTypes][(int)(maxNumberOfBars*maxNumberOfHitsPerBar)];
 
 -(void) getValues:(NSTimer *) timer {
     NSLog(@"%d",currentHit);
+    if(currentHit% maxNumberOfHitsPerBar==0){
+        [self playFirstMetro];
+    }else if (currentHit*4%maxNumberOfHitsPerBar==0){
+        [self playMetro];
+    }
     if (currentHit<maxNumberOfHitsPerBar*self.nBars) {
         currentHit++;
     }
     else {
         currentHit=0;
     }
-    
     for (int x=0;x<numberOfTypes;x++) {
         if (looper[x][currentHit]) {
             [self playSound:x];
@@ -218,11 +244,19 @@ BOOL looper[numberOfTypes][(int)(maxNumberOfBars*maxNumberOfHitsPerBar)];
 //        [self pulse];
 //        
 //    }
-    
-   
-    
-    
 }
+-(void)playMetro{
+    dispatch_async(self.metronomeQueue, ^{
+        [[AudioSamplePlayer sharedInstance] playAudioSample:@"tick" gain:0.8f pitch:0.5f];
+
+    });
+}
+-(void)playFirstMetro{
+    dispatch_async(self.metronomeQueue, ^{
+        [[AudioSamplePlayer sharedInstance] playAudioSample:@"tick" gain:1.0f pitch:1.0f];
+    });
+}
+
 -(void) setValues:(NSTimer *) timer {
     x_prev = motionManager.accelerometerData.acceleration.x;
     y_prev = motionManager.accelerometerData.acceleration.y;
@@ -233,13 +267,23 @@ BOOL looper[numberOfTypes][(int)(maxNumberOfBars*maxNumberOfHitsPerBar)];
 }
 
 - (IBAction)bpmUp:(id)sender {
+    if (!spinning) {
+        [self setBpmAndUpdateTimer:self.bpm+bpmStep];
+        [self.bpmLabel setText:[NSString stringWithFormat:@"%d",self.bpm]];
+    }
+    
 }
 - (IBAction)bpmDown:(id)sender {
+    if (!spinning) {
+        [self setBpmAndUpdateTimer:self.bpm-bpmStep];
+        [self.bpmLabel setText:[NSString stringWithFormat:@"%d",self.bpm]];
+    }
+    
 }
 
 
 -(void) deleteTrack:(int)num {
-    for (int x=0;x<(int)roundTime/refreshInterval;x++) {
+    for (int x=0;x<(int)self.roundTime/self.refreshInterval;x++) {
         looper[num][x] = false;
     }
 }
