@@ -9,23 +9,28 @@
 #import "ViewController.h"
 #import <AVFoundation/AVFoundation.h>
 @interface ViewController ()
+@property AVAudioPlayer *snareAudioPlayer;
 @property (weak, nonatomic) IBOutlet UIButton *mainButton;
 
 
 @end
 
+bool spinning;
+double roundTime = 10.0;
+
 @implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    spinning = false;
+    NSURL *soundURL = [[NSBundle mainBundle] URLForResource:@"snare"
+                                              withExtension:@"wav"];
+    self.snareAudioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:soundURL error:nil];
+    [self.snareAudioPlayer setVolume:0.0];
+    [self.snareAudioPlayer play];
     
     
-    CABasicAnimation* animation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
-    animation.fromValue = [NSNumber numberWithFloat:0.0f];
-    animation.toValue = [NSNumber numberWithFloat: 2*M_PI];
-    animation.duration = 10.0f;
-    animation.repeatCount = INFINITY;
-    [self.mainButton.layer addAnimation:animation forKey:@"SpinAnimation"];
+   
     
     // Do any additional setup after loading the view, typically from a nib.
 }
@@ -48,7 +53,24 @@
         //code for completion
     }];
 }
+
+- (void) startSpinning {
+    if (!spinning) {
+        CABasicAnimation* animation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
+        animation.fromValue = [NSNumber numberWithFloat:0.0f];
+        animation.toValue = [NSNumber numberWithFloat: 2*M_PI];
+        animation.duration = roundTime;
+        [self.mainButton.layer addAnimation:animation forKey:@"SpinAnimation"];
+        spinning = true;
+        [NSTimer scheduledTimerWithTimeInterval:roundTime target:self selector:@selector(stopSpinning:) userInfo:nil repeats:NO];
+    }
+    
+}
+- (void) stopSpinning:(NSTimer *) timer {
+    spinning = false;
+}
 - (IBAction)buttonpress:(id)sender {
+    [self startSpinning];
     [self pulse];
 }
 
