@@ -17,8 +17,14 @@
 		87EF2F871BBF4A90005F886F /* HackZurich15Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 87EF2F861BBF4A90005F886F /* HackZurich15Tests.m */; };
 		87EF2F921BBF4A90005F886F /* HackZurich15UITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 87EF2F911BBF4A90005F886F /* HackZurich15UITests.m */; };
 		87EF2FA51BBF57D8005F886F /* snare.wav in Resources */ = {isa = PBXBuildFile; fileRef = 87EF2FA41BBF57D8005F886F /* snare.wav */; settings = {ASSET_TAGS = (); }; };
-		D04EDE521BBF64D7000D3CD5 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D04EDE511BBF64D7000D3CD5 /* CoreMotion.framework */; };
 		87EF2FA81BBF6230005F886F /* AudioSamplePlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 87EF2FA71BBF6230005F886F /* AudioSamplePlayer.m */; settings = {ASSET_TAGS = (); }; };
+		D04EDE521BBF64D7000D3CD5 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D04EDE511BBF64D7000D3CD5 /* CoreMotion.framework */; };
+		D04EDE541BC0548B000D3CD5 /* Sound0.caf in Resources */ = {isa = PBXBuildFile; fileRef = D04EDE531BC0548B000D3CD5 /* Sound0.caf */; settings = {ASSET_TAGS = (); }; };
+		D04EDE5A1BC055AB000D3CD5 /* Sound1.caf in Resources */ = {isa = PBXBuildFile; fileRef = D04EDE551BC055AB000D3CD5 /* Sound1.caf */; settings = {ASSET_TAGS = (); }; };
+		D04EDE5B1BC055AB000D3CD5 /* Sound2.caf in Resources */ = {isa = PBXBuildFile; fileRef = D04EDE561BC055AB000D3CD5 /* Sound2.caf */; settings = {ASSET_TAGS = (); }; };
+		D04EDE5C1BC055AB000D3CD5 /* Sound3.caf in Resources */ = {isa = PBXBuildFile; fileRef = D04EDE571BC055AB000D3CD5 /* Sound3.caf */; settings = {ASSET_TAGS = (); }; };
+		D04EDE5D1BC055AB000D3CD5 /* Sound4.caf in Resources */ = {isa = PBXBuildFile; fileRef = D04EDE581BC055AB000D3CD5 /* Sound4.caf */; settings = {ASSET_TAGS = (); }; };
+		D04EDE5E1BC055AB000D3CD5 /* Sound5.caf in Resources */ = {isa = PBXBuildFile; fileRef = D04EDE591BC055AB000D3CD5 /* Sound5.caf */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,10 +63,15 @@
 		87EF2F911BBF4A90005F886F /* HackZurich15UITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HackZurich15UITests.m; sourceTree = "<group>"; };
 		87EF2F931BBF4A90005F886F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		87EF2FA41BBF57D8005F886F /* snare.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = snare.wav; sourceTree = "<group>"; };
-		D04EDE511BBF64D7000D3CD5 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		87EF2FA61BBF6225005F886F /* AudioSamplePlayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AudioSamplePlayer.h; sourceTree = "<group>"; };
 		87EF2FA71BBF6230005F886F /* AudioSamplePlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioSamplePlayer.m; sourceTree = "<group>"; };
-		87EF2FA91BBF652E005F886F /* out.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = out.caf; sourceTree = "<group>"; };
+		D04EDE511BBF64D7000D3CD5 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		D04EDE531BC0548B000D3CD5 /* Sound0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Sound0.caf; sourceTree = "<group>"; };
+		D04EDE551BC055AB000D3CD5 /* Sound1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Sound1.caf; sourceTree = "<group>"; };
+		D04EDE561BC055AB000D3CD5 /* Sound2.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Sound2.caf; sourceTree = "<group>"; };
+		D04EDE571BC055AB000D3CD5 /* Sound3.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Sound3.caf; sourceTree = "<group>"; };
+		D04EDE581BC055AB000D3CD5 /* Sound4.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Sound4.caf; sourceTree = "<group>"; };
+		D04EDE591BC055AB000D3CD5 /* Sound5.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Sound5.caf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,7 +133,12 @@
 				87EF2FA41BBF57D8005F886F /* snare.wav */,
 				87EF2F7A1BBF4A90005F886F /* LaunchScreen.storyboard */,
 				87EF2F7D1BBF4A90005F886F /* Info.plist */,
-				87EF2FA91BBF652E005F886F /* out.caf */,
+				D04EDE531BC0548B000D3CD5 /* Sound0.caf */,
+				D04EDE551BC055AB000D3CD5 /* Sound1.caf */,
+				D04EDE561BC055AB000D3CD5 /* Sound2.caf */,
+				D04EDE571BC055AB000D3CD5 /* Sound3.caf */,
+				D04EDE581BC055AB000D3CD5 /* Sound4.caf */,
+				D04EDE591BC055AB000D3CD5 /* Sound5.caf */,
 				87E9E4EF1BBFE952008208D9 /* snares.caf */,
 				87EF2FA61BBF6225005F886F /* AudioSamplePlayer.h */,
 				87EF2FA71BBF6230005F886F /* AudioSamplePlayer.m */,
@@ -261,10 +277,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				87EF2F7C1BBF4A90005F886F /* LaunchScreen.storyboard in Resources */,
+				D04EDE5E1BC055AB000D3CD5 /* Sound5.caf in Resources */,
 				87EF2F791BBF4A90005F886F /* Assets.xcassets in Resources */,
 				87E9E4F01BBFE952008208D9 /* snares.caf in Resources */,
+				D04EDE5D1BC055AB000D3CD5 /* Sound4.caf in Resources */,
 				87EF2FA51BBF57D8005F886F /* snare.wav in Resources */,
+				D04EDE541BC0548B000D3CD5 /* Sound0.caf in Resources */,
+				D04EDE5C1BC055AB000D3CD5 /* Sound3.caf in Resources */,
+				D04EDE5B1BC055AB000D3CD5 /* Sound2.caf in Resources */,
 				87EF2F771BBF4A90005F886F /* Main.storyboard in Resources */,
+				D04EDE5A1BC055AB000D3CD5 /* Sound1.caf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

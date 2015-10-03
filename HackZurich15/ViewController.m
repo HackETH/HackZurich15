@@ -86,7 +86,13 @@ BOOL looper[numberOfTypes][(int)(roundTime/refreshInterval)];
    
     
     // Do any additional setup after loading the view, typically from a nib.
-    [[AudioSamplePlayer sharedInstance] preloadAudioSample:@"snares"];
+    [[AudioSamplePlayer sharedInstance] preloadAudioSample:@"Sound0"];
+    [[AudioSamplePlayer sharedInstance] preloadAudioSample:@"Sound1"];
+    [[AudioSamplePlayer sharedInstance] preloadAudioSample:@"Sound2"];
+    [[AudioSamplePlayer sharedInstance] preloadAudioSample:@"Sound3"];
+    [[AudioSamplePlayer sharedInstance] preloadAudioSample:@"Sound4"];
+    [[AudioSamplePlayer sharedInstance] preloadAudioSample:@"Sound5"];
+    
     
 }
 
@@ -136,7 +142,7 @@ BOOL looper[numberOfTypes][(int)(roundTime/refreshInterval)];
 - (void)playSound:(int) soundType {
     [self pulse:soundType];
     dispatch_async(_metronomeQueue, ^{
-        [[AudioSamplePlayer sharedInstance] playAudioSample:@"snares"];
+        [[AudioSamplePlayer sharedInstance] playAudioSample:[NSString stringWithFormat:@"Sound%d",soundType]];
 
     });
 }
