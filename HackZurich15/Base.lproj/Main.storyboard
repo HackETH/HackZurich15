@@ -56,9 +56,13 @@
                                     <action selector="bpmDown:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WbH-DI-mn8"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="180" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sQu-8A-ilN">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sQu-8A-ilN">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                 <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="42" id="0yA-QJ-liu"/>
+                                    <constraint firstAttribute="height" constant="26" id="BhE-I0-9cW"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <color key="textColor" red="0.94338060461956519" green="0.94338060461956519" blue="0.94338060461956519" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -488,6 +492,18 @@
                                 <exclude reference="FQS-P0-cQf"/>
                                 <exclude reference="dXI-ki-HTq"/>
                                 <exclude reference="pDp-1n-BvV"/>
+                                <exclude reference="dMZ-s4-ebk"/>
+                                <exclude reference="nKr-AF-xLW"/>
+                                <exclude reference="H3M-Sw-CrC"/>
+                                <exclude reference="J6X-GJ-Wk5"/>
+                                <exclude reference="0nf-pi-bvd"/>
+                                <exclude reference="C66-P2-JZk"/>
+                                <exclude reference="N1N-hv-YXl"/>
+                                <exclude reference="g56-Tb-ZmP"/>
+                                <exclude reference="3kS-8m-2kP"/>
+                                <exclude reference="Ljy-fs-WAx"/>
+                                <exclude reference="Bit-Eg-S5S"/>
+                                <exclude reference="k4f-mI-mQe"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular">
@@ -522,6 +538,18 @@
                                 <exclude reference="FQS-P0-cQf"/>
                                 <include reference="dXI-ki-HTq"/>
                                 <include reference="pDp-1n-BvV"/>
+                                <include reference="dMZ-s4-ebk"/>
+                                <include reference="nKr-AF-xLW"/>
+                                <include reference="H3M-Sw-CrC"/>
+                                <include reference="J6X-GJ-Wk5"/>
+                                <include reference="0nf-pi-bvd"/>
+                                <include reference="C66-P2-JZk"/>
+                                <include reference="N1N-hv-YXl"/>
+                                <include reference="g56-Tb-ZmP"/>
+                                <include reference="3kS-8m-2kP"/>
+                                <include reference="Ljy-fs-WAx"/>
+                                <include reference="Bit-Eg-S5S"/>
+                                <include reference="k4f-mI-mQe"/>
                             </mask>
                         </variation>
                     </view>
@@ -535,6 +563,7 @@
                         <outlet property="circle4" destination="bHC-o5-Puc" id="TLO-HA-OM3"/>
                         <outlet property="circle5" destination="AHk-ld-e5A" id="HaJ-qz-Ma9"/>
                         <outlet property="mainButton" destination="fVA-oW-YRI" id="CNP-jG-4bS"/>
+                        <outlet property="upArrowButton" destination="Dof-Ht-8vD" id="6jM-9V-hXI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

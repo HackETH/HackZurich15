@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		873531261BC0505800B1DEF6 /* tick.caf in Resources */ = {isa = PBXBuildFile; fileRef = 873531251BC0505800B1DEF6 /* tick.caf */; settings = {ASSET_TAGS = (); }; };
 		87E9E4F01BBFE952008208D9 /* snares.caf in Resources */ = {isa = PBXBuildFile; fileRef = 87E9E4EF1BBFE952008208D9 /* snares.caf */; settings = {ASSET_TAGS = (); }; };
 		87EF2F6E1BBF4A90005F886F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 87EF2F6D1BBF4A90005F886F /* main.m */; };
 		87EF2F711BBF4A90005F886F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 87EF2F701BBF4A90005F886F /* AppDelegate.m */; };
@@ -45,6 +46,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		873531251BC0505800B1DEF6 /* tick.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = tick.caf; sourceTree = "<group>"; };
 		87E9E4EF1BBFE952008208D9 /* snares.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = snares.caf; sourceTree = "<group>"; };
 		87EF2F691BBF4A90005F886F /* HackZurich15.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HackZurich15.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		87EF2F6D1BBF4A90005F886F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -100,6 +102,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		873531241BC04FB700B1DEF6 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				873531251BC0505800B1DEF6 /* tick.caf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		87EF2F601BBF4A90005F886F = {
 			isa = PBXGroup;
 			children = (
