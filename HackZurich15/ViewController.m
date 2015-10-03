@@ -14,6 +14,27 @@
 @property AudioSamplePlayer *samplePlayer;
 @end
 
+// Constants
+
+#define numberOfTypes ((int) 5)
+#define roundTime ((double) 10.0)
+#define refreshInterval ((double) 0.01)
+
+// End
+
+CMMotionManager *motionManager;
+bool spinning;
+double x_prev;
+double y_prev;
+double z_prev;
+BOOL firstWait;
+BOOL recording;
+int currentType = 0;
+int currentBar = 0;
+BOOL looper[numberOfTypes][(int)(roundTime/refreshInterval)];
+
+
+
 @implementation ViewController
 
 - (void)viewDidLoad {
@@ -48,7 +69,30 @@
         //code for completion
     }];
 }
+
+- (void) startSpinning {
+    if (!spinning) {
+        CABasicAnimation* animation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
+        animation.fromValue = [NSNumber numberWithFloat:0.0f];
+        animation.toValue = [NSNumber numberWithFloat: 2*M_PI];
+        animation.duration = roundTime;
+        [self.mainButton.layer addAnimation:animation forKey:@"SpinAnimation"];
+        spinning = true;
+        [NSTimer scheduledTimerWithTimeInterval:roundTime target:self selector:@selector(stopSpinning:) userInfo:nil repeats:NO];
+    }
+    
+}
+- (void) stopSpinning:(NSTimer *) timer {
+    spinning = false;
+    currentType++;
+}
 - (IBAction)buttonpress:(id)sender {
+    [self startSpinning];
+    [self pulse];
+    [self recordSound];
+}
+
+- (void)playSound:(int *) soundType {
     [self pulse];
     dispatch_queue_t metronomeQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0);
     dispatch_async(metronomeQueue, ^{
@@ -57,9 +101,70 @@
     });
 }
 
+- (void)recordSound {
+    looper[currentType][currentBar] = true;
+    
+}
+
+- (void)deleteLastTrack {
+    
+    if (spinning) {
+        
+    }
+    else {
+        currentBar--;
+        for (int x=0;x<roundTime/refreshInterval;x++) {
+            looper[x][currentBar]=false;
+        }
+    }
+    
+   
+}
+
+
+
+-(void) getValues:(NSTimer *) timer {
+    if (currentBar<roundTime/refreshInterval) {
+        currentBar++;
+    }
+    else {
+        currentBar=0;
+    }
+    
+    for (int x=0;x<numberOfTypes;x++) {
+        if (looper[x][currentBar]) {
+            [self playSound:&x];
+        }
+    }
+    
+    
+    
+//    if (firstWait && fabs(motionManager.accelerometerData.acceleration.z-z_prev)>0.03) {
+//        [self startSpinning];
+//        [self pulse];
+//        
+//    }
+    
+   
+    
+    
+}
+-(void) setValues:(NSTimer *) timer {
+    x_prev = motionManager.accelerometerData.acceleration.x;
+    y_prev = motionManager.accelerometerData.acceleration.y;
+    z_prev = motionManager.accelerometerData.acceleration.z;
+    firstWait = true;
+    
+    
+}
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
+
 
 @end

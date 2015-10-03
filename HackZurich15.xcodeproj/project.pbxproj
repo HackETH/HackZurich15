@@ -66,6 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D04EDE521BBF64D7000D3CD5 /* CoreMotion.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -89,6 +90,7 @@
 		87EF2F601BBF4A90005F886F = {
 			isa = PBXGroup;
 			children = (
+				D04EDE511BBF64D7000D3CD5 /* CoreMotion.framework */,
 				87EF2F6B1BBF4A90005F886F /* HackZurich15 */,
 				87EF2F851BBF4A90005F886F /* HackZurich15Tests */,
 				87EF2F901BBF4A90005F886F /* HackZurich15UITests */,
