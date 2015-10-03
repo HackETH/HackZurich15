@@ -13,6 +13,7 @@
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *upArrowButton;
 @property (weak, nonatomic) IBOutlet UIButton *downArrowButton;
+@property (weak, nonatomic) IBOutlet UIImageView *clockImage;
 
 @property AVAudioPlayer *snareAudioPlayer;
 @property AudioSamplePlayer *samplePlayer;
@@ -70,6 +71,7 @@ BOOL looper[numberOfTypes][(int)(maxNumberOfBars*maxNumberOfHitsPerBar)];
     self.intervalTimer = [NSTimer scheduledTimerWithTimeInterval:self.refreshInterval target:self selector:@selector(getValues:) userInfo:nil repeats:YES];
     
 }
+
 -(double)roundTime{
     return 60*(self.nBars*4)/self.bpm;
 }
@@ -86,6 +88,7 @@ BOOL looper[numberOfTypes][(int)(maxNumberOfBars*maxNumberOfHitsPerBar)];
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+     [self setNeedsStatusBarAppearanceUpdate];
     self.bpm = 80;
     self.nBars = 2;
     _metronomeQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0);
@@ -186,8 +189,15 @@ BOOL looper[numberOfTypes][(int)(maxNumberOfBars*maxNumberOfHitsPerBar)];
     self.upArrowButton.enabled = YES;
     self.downArrowButton.enabled =YES;
     currentType++;
+    if (currentType>=numberOfTypes) {
+        currentType = 0;
+    }
     [self animateButtons:currentType];
     [self.mainButton setImage:[UIImage imageNamed:[NSString stringWithFormat:@"Button%d",currentType]]forState:UIControlStateNormal];
+    
+    [self.upArrowButton setImage:[UIImage imageNamed:[NSString stringWithFormat:@"Plus%d",currentType]]forState:UIControlStateNormal];
+    
+    [self.downArrowButton setImage:[UIImage imageNamed:[NSString stringWithFormat:@"Minus%d",currentType]]forState:UIControlStateNormal];
 }
 
 - (IBAction)buttonpress:(id)sender {
@@ -300,36 +310,62 @@ BOOL looper[numberOfTypes][(int)(maxNumberOfBars*maxNumberOfHitsPerBar)];
     currentType = 0;
     [self deleteTrack:0];
     [self.mainButton setImage:[UIImage imageNamed:[NSString stringWithFormat:@"Button%d",0]]forState:UIControlStateNormal];
+    
+    [self.upArrowButton setImage:[UIImage imageNamed:[NSString stringWithFormat:@"Plus%d",0]]forState:UIControlStateNormal];
+    
+    [self.downArrowButton setImage:[UIImage imageNamed:[NSString stringWithFormat:@"Minus%d",0]]forState:UIControlStateNormal];
+
 }
 - (IBAction)circlePress1:(id)sender {
    [self animateButtons:1];
     currentType = 1;
     [self deleteTrack:1];
     [self.mainButton setImage:[UIImage imageNamed:[NSString stringWithFormat:@"Button%d",1]]forState:UIControlStateNormal];
+    
+    [self.upArrowButton setImage:[UIImage imageNamed:[NSString stringWithFormat:@"Plus%d",1]]forState:UIControlStateNormal];
+    
+    [self.downArrowButton setImage:[UIImage imageNamed:[NSString stringWithFormat:@"Minus%d",1]]forState:UIControlStateNormal];
+    
 }
 - (IBAction)circlePress2:(id)sender {
     [self animateButtons:2];
     currentType = 2;
     [self deleteTrack:2];
     [self.mainButton setImage:[UIImage imageNamed:[NSString stringWithFormat:@"Button%d",2]]forState:UIControlStateNormal];
+    
+    [self.upArrowButton setImage:[UIImage imageNamed:[NSString stringWithFormat:@"Plus%d",2]]forState:UIControlStateNormal];
+    
+    [self.downArrowButton setImage:[UIImage imageNamed:[NSString stringWithFormat:@"Minus%d",2]]forState:UIControlStateNormal];
 }
 - (IBAction)circlePress3:(id)sender {
     [self animateButtons:3];
     currentType = 3;
     [self deleteTrack:3];
     [self.mainButton setImage:[UIImage imageNamed:[NSString stringWithFormat:@"Button%d",3]]forState:UIControlStateNormal];
+    
+    [self.upArrowButton setImage:[UIImage imageNamed:[NSString stringWithFormat:@"Plus%d",3]]forState:UIControlStateNormal];
+    
+    [self.downArrowButton setImage:[UIImage imageNamed:[NSString stringWithFormat:@"Minus%d",3]]forState:UIControlStateNormal];
 }
 - (IBAction)circlePress4:(id)sender {
     [self animateButtons:4];
     currentType = 4;
     [self deleteTrack:4];
     [self.mainButton setImage:[UIImage imageNamed:[NSString stringWithFormat:@"Button%d",4]]forState:UIControlStateNormal];
+    
+    [self.upArrowButton setImage:[UIImage imageNamed:[NSString stringWithFormat:@"Plus%d",4]]forState:UIControlStateNormal];
+    
+    [self.downArrowButton setImage:[UIImage imageNamed:[NSString stringWithFormat:@"Minus%d",4]]forState:UIControlStateNormal];
 }
 - (IBAction)circlePress5:(id)sender {
     [self animateButtons:5];
     currentType = 5;
     [self deleteTrack:5];
     [self.mainButton setImage:[UIImage imageNamed:[NSString stringWithFormat:@"Button%d",5]]forState:UIControlStateNormal];
+    
+    [self.upArrowButton setImage:[UIImage imageNamed:[NSString stringWithFormat:@"Plus%d",5]]forState:UIControlStateNormal];
+    
+    [self.downArrowButton setImage:[UIImage imageNamed:[NSString stringWithFormat:@"Minus%d",5]]forState:UIControlStateNormal];
 }
 
 - (void)animateButtons:(int)num {
