@@ -11,20 +11,24 @@
 #import "AudioSamplePlayer.h"
 #import <CoreMotion/CoreMotion.h>
 @interface ViewController ()
+@property (weak, nonatomic) IBOutlet UIPickerView *pickerView;
 @property AVAudioPlayer *snareAudioPlayer;
 @property AudioSamplePlayer *samplePlayer;
 @property dispatch_queue_t metronomeQueue;
-
+@property NSDate *circleStartDate;
 @property (weak, nonatomic) IBOutlet UIButton *mainButton;
-
-
+@property double refreshInterval;
+@property double roundTime;
+@property int bpm;
+@property int nBars;
+@property NSTimer *intervalTimer;
 @end
 
 // Constants
 
 #define numberOfTypes ((int) 5)
-#define roundTime ((double) 10.0)
-#define refreshInterval ((double) 0.01)
+#define maxNumberOfBars 8
+#define maxNumberOfHitsPerBar 128
 
 // End
 
@@ -36,15 +40,40 @@ double z_prev;
 BOOL firstWait;
 BOOL recording;
 int currentType = 0;
-int currentBar = 0;
-BOOL looper[numberOfTypes][(int)(roundTime/refreshInterval)];
+int currentHit = 0;
+BOOL looper[numberOfTypes][(int)(maxNumberOfBars*maxNumberOfHitsPerBar)];
 
 
 
 @implementation ViewController
 
+-(void)setBpmAndUpdateTimer:(int) bpmVal{
+    self.bpm = bpmVal;
+    [self updateSpinning];
+    [self.intervalTimer invalidate];
+    self.intervalTimer = [NSTimer timerWithTimeInterval:self.refreshInterval target:self selector:@selector(getValues:) userInfo:nil repeats:YES];
+    
+}
+-(double)roundTime{
+    return 60*(self.nBars*4)/self.bpm;
+}
+-(void)setRoundTime:(double)roundTime{
+    ;
+}
+
+-(double)refreshInterval{
+    return (double)(1.0/((double)(self.bpm)/60.0/4.0))/(double)maxNumberOfHitsPerBar;
+}
+-(void)setRefreshInterval:(double)refreshInterval
+{
+    ;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.bpm = 80;
+    self.nBars = 2;
+    self.pickerView.dataSource = self;
+    self.pickerView.delegate = self;
     _metronomeQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0);
     spinning = false;
     /*
@@ -60,7 +89,7 @@ BOOL looper[numberOfTypes][(int)(roundTime/refreshInterval)];
     
     firstWait = false;
     recording = false;
-    [NSTimer scheduledTimerWithTimeInterval:refreshInterval target:self selector:@selector(getValues:) userInfo:nil repeats:YES];
+    self.intervalTimer= [NSTimer scheduledTimerWithTimeInterval:self.refreshInterval target:self selector:@selector(getValues:) userInfo:nil repeats:YES];
 
     
     
@@ -68,7 +97,7 @@ BOOL looper[numberOfTypes][(int)(roundTime/refreshInterval)];
     
     motionManager = [[CMMotionManager alloc] init];
     
-    motionManager.accelerometerUpdateInterval = refreshInterval;  // 20 Hz
+    motionManager.accelerometerUpdateInterval = self.refreshInterval;  // 20 Hz
     [motionManager startAccelerometerUpdates];
     
    
@@ -94,27 +123,38 @@ BOOL looper[numberOfTypes][(int)(roundTime/refreshInterval)];
         //code with animation
     } completion:^(BOOL finished) {
         //code for completion
+        // Free Memory?
     }];
 }
 
-- (void) startSpinning {
+
+- (void) startSpinningWith:(float) offset {
     if (!spinning) {
+        
         CABasicAnimation* animation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
-        animation.fromValue = [NSNumber numberWithFloat:0.0f];
+        animation.fromValue = [NSNumber numberWithFloat:0.0f+offset];
         animation.toValue = [NSNumber numberWithFloat: 2*M_PI];
-        animation.duration = roundTime;
+        animation.duration = self.roundTime;
+        
         [self.mainButton.layer addAnimation:animation forKey:@"SpinAnimation"];
         spinning = true;
-        [NSTimer scheduledTimerWithTimeInterval:roundTime target:self selector:@selector(stopSpinning:) userInfo:nil repeats:NO];
+        [NSTimer scheduledTimerWithTimeInterval:self.roundTime target:self selector:@selector(stopSpinning:) userInfo:nil repeats:NO];
     }
     
+}
+-(void)updateSpinning{
+    float currentOffset = (double)currentHit*2.0f*M_PI/((double)maxNumberOfHitsPerBar*(double)self.nBars);
+    NSLog(@"%d",currentHit);
+    spinning = false;
+    [self.mainButton.layer removeAllAnimations];
+    [self startSpinningWith:currentOffset];
 }
 - (void) stopSpinning:(NSTimer *) timer {
     spinning = false;
     currentType++;
 }
 - (IBAction)buttonpress:(id)sender {
-    [self startSpinning];
+    [self startSpinningWith:0.0f];
     [self pulse];
     [self recordSound];
     [self playSound:currentType];
@@ -129,7 +169,7 @@ BOOL looper[numberOfTypes][(int)(roundTime/refreshInterval)];
 }
 
 - (void)recordSound {
-    looper[currentType][currentBar] = true;
+    looper[currentType][currentHit] = true;
     
 }
 
@@ -139,9 +179,9 @@ BOOL looper[numberOfTypes][(int)(roundTime/refreshInterval)];
         
     }
     else {
-        currentBar--;
-        for (int x=0;x<roundTime/refreshInterval;x++) {
-            looper[x][currentBar]=false;
+        currentHit--;
+        for (int x=0;x<self.roundTime/self.refreshInterval;x++) {
+            looper[x][currentHit]=false;
         }
     }
     
@@ -151,16 +191,17 @@ BOOL looper[numberOfTypes][(int)(roundTime/refreshInterval)];
 
 
 -(void) getValues:(NSTimer *) timer {
-    if (currentBar<roundTime/refreshInterval) {
-        currentBar++;
+    NSLog(@"%d",currentHit);
+    if (currentHit<maxNumberOfHitsPerBar*self.nBars) {
+        currentHit++;
     }
     else {
-        currentBar=0;
+        currentHit=0;
     }
     
     for (int x=0;x<numberOfTypes;x++) {
-        if (looper[x][currentBar]) {
-            [self playSound:&x];
+        if (looper[x][currentHit]) {
+            [self playSound:x];
         }
     }
     
@@ -190,8 +231,5 @@ BOOL looper[numberOfTypes][(int)(roundTime/refreshInterval)];
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-
-
 
 @end
