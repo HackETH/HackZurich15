@@ -8,9 +8,13 @@
 
 #import "ViewController.h"
 #import <AVFoundation/AVFoundation.h>
+#import "AudioSamplePlayer.h"
 #import <CoreMotion/CoreMotion.h>
 @interface ViewController ()
 @property AVAudioPlayer *snareAudioPlayer;
+@property AudioSamplePlayer *samplePlayer;
+@property dispatch_queue_t metronomeQueue;
+
 @property (weak, nonatomic) IBOutlet UIButton *mainButton;
 
 
@@ -41,12 +45,15 @@ BOOL looper[numberOfTypes][(int)(roundTime/refreshInterval)];
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _metronomeQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0);
     spinning = false;
+    /*
     NSURL *soundURL = [[NSBundle mainBundle] URLForResource:@"snare"
                                               withExtension:@"wav"];
     self.snareAudioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:soundURL error:nil];
     [self.snareAudioPlayer setVolume:0.0];
     [self.snareAudioPlayer play];
+    [self.snareAudioPlayer setVolume:1.0];*/
     
     
     
@@ -54,6 +61,7 @@ BOOL looper[numberOfTypes][(int)(roundTime/refreshInterval)];
     firstWait = false;
     recording = false;
     [NSTimer scheduledTimerWithTimeInterval:refreshInterval target:self selector:@selector(getValues:) userInfo:nil repeats:YES];
+
     
     
     [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(setValues:) userInfo:nil repeats:NO];
@@ -66,6 +74,8 @@ BOOL looper[numberOfTypes][(int)(roundTime/refreshInterval)];
    
     
     // Do any additional setup after loading the view, typically from a nib.
+    [[AudioSamplePlayer sharedInstance] preloadAudioSample:@"snares"];
+    
 }
 
 - (void)pulse {
@@ -110,7 +120,7 @@ BOOL looper[numberOfTypes][(int)(roundTime/refreshInterval)];
     [self playSound:currentType];
 }
 
-- (void)playSound:(int *) soundType {
+- (void)playSound:(int) soundType {
     [self pulse];
 }
 
