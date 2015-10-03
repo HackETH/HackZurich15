@@ -8,20 +8,26 @@
 
 #import "ViewController.h"
 #import <AVFoundation/AVFoundation.h>
+#import "AudioSamplePlayer.h"
 @interface ViewController ()
 @property AVAudioPlayer *snareAudioPlayer;
+@property AudioSamplePlayer *samplePlayer;
 @end
 
 @implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    /*
     NSURL *soundURL = [[NSBundle mainBundle] URLForResource:@"snare"
                                               withExtension:@"wav"];
     self.snareAudioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:soundURL error:nil];
     [self.snareAudioPlayer setVolume:0.0];
     [self.snareAudioPlayer play];
+    [self.snareAudioPlayer setVolume:1.0];*/
     // Do any additional setup after loading the view, typically from a nib.
+    [[AudioSamplePlayer sharedInstance] preloadAudioSample:@"snares"];
+    
 }
 
 - (void)pulse {
@@ -44,6 +50,11 @@
 }
 - (IBAction)buttonpress:(id)sender {
     [self pulse];
+    dispatch_queue_t metronomeQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0);
+    dispatch_async(metronomeQueue, ^{
+        [[AudioSamplePlayer sharedInstance] playAudioSample:@"snares"];
+        
+    });
 }
 
 - (void)didReceiveMemoryWarning {

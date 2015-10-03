@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		87E9E4F01BBFE952008208D9 /* snares.caf in Resources */ = {isa = PBXBuildFile; fileRef = 87E9E4EF1BBFE952008208D9 /* snares.caf */; settings = {ASSET_TAGS = (); }; };
 		87EF2F6E1BBF4A90005F886F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 87EF2F6D1BBF4A90005F886F /* main.m */; };
 		87EF2F711BBF4A90005F886F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 87EF2F701BBF4A90005F886F /* AppDelegate.m */; };
 		87EF2F741BBF4A90005F886F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87EF2F731BBF4A90005F886F /* ViewController.m */; };
@@ -16,6 +17,7 @@
 		87EF2F871BBF4A90005F886F /* HackZurich15Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 87EF2F861BBF4A90005F886F /* HackZurich15Tests.m */; };
 		87EF2F921BBF4A90005F886F /* HackZurich15UITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 87EF2F911BBF4A90005F886F /* HackZurich15UITests.m */; };
 		87EF2FA51BBF57D8005F886F /* snare.wav in Resources */ = {isa = PBXBuildFile; fileRef = 87EF2FA41BBF57D8005F886F /* snare.wav */; settings = {ASSET_TAGS = (); }; };
+		87EF2FA81BBF6230005F886F /* AudioSamplePlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 87EF2FA71BBF6230005F886F /* AudioSamplePlayer.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		87E9E4EF1BBFE952008208D9 /* snares.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = snares.caf; sourceTree = "<group>"; };
 		87EF2F691BBF4A90005F886F /* HackZurich15.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HackZurich15.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		87EF2F6D1BBF4A90005F886F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		87EF2F6F1BBF4A90005F886F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -53,6 +56,9 @@
 		87EF2F911BBF4A90005F886F /* HackZurich15UITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HackZurich15UITests.m; sourceTree = "<group>"; };
 		87EF2F931BBF4A90005F886F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		87EF2FA41BBF57D8005F886F /* snare.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = snare.wav; sourceTree = "<group>"; };
+		87EF2FA61BBF6225005F886F /* AudioSamplePlayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AudioSamplePlayer.h; sourceTree = "<group>"; };
+		87EF2FA71BBF6230005F886F /* AudioSamplePlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioSamplePlayer.m; sourceTree = "<group>"; };
+		87EF2FA91BBF652E005F886F /* out.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = out.caf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,9 +115,13 @@
 				87EF2F731BBF4A90005F886F /* ViewController.m */,
 				87EF2F751BBF4A90005F886F /* Main.storyboard */,
 				87EF2F781BBF4A90005F886F /* Assets.xcassets */,
+				87EF2FA41BBF57D8005F886F /* snare.wav */,
 				87EF2F7A1BBF4A90005F886F /* LaunchScreen.storyboard */,
 				87EF2F7D1BBF4A90005F886F /* Info.plist */,
-				87EF2FA41BBF57D8005F886F /* snare.wav */,
+				87EF2FA91BBF652E005F886F /* out.caf */,
+				87E9E4EF1BBFE952008208D9 /* snares.caf */,
+				87EF2FA61BBF6225005F886F /* AudioSamplePlayer.h */,
+				87EF2FA71BBF6230005F886F /* AudioSamplePlayer.m */,
 				87EF2F6C1BBF4A90005F886F /* Supporting Files */,
 			);
 			path = HackZurich15;
@@ -248,6 +258,7 @@
 			files = (
 				87EF2F7C1BBF4A90005F886F /* LaunchScreen.storyboard in Resources */,
 				87EF2F791BBF4A90005F886F /* Assets.xcassets in Resources */,
+				87E9E4F01BBFE952008208D9 /* snares.caf in Resources */,
 				87EF2FA51BBF57D8005F886F /* snare.wav in Resources */,
 				87EF2F771BBF4A90005F886F /* Main.storyboard in Resources */,
 			);
@@ -277,6 +288,7 @@
 				87EF2F741BBF4A90005F886F /* ViewController.m in Sources */,
 				87EF2F711BBF4A90005F886F /* AppDelegate.m in Sources */,
 				87EF2F6E1BBF4A90005F886F /* main.m in Sources */,
+				87EF2FA81BBF6230005F886F /* AudioSamplePlayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -500,6 +512,7 @@
 				87EF2F981BBF4A90005F886F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		87EF2F991BBF4A90005F886F /* Build configuration list for PBXNativeTarget "HackZurich15Tests" */ = {
 			isa = XCConfigurationList;
@@ -508,6 +521,7 @@
 				87EF2F9B1BBF4A90005F886F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		87EF2F9C1BBF4A90005F886F /* Build configuration list for PBXNativeTarget "HackZurich15UITests" */ = {
 			isa = XCConfigurationList;
@@ -516,6 +530,7 @@
 				87EF2F9E1BBF4A90005F886F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
