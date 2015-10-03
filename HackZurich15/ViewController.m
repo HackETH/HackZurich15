@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-
+#import <AVFoundation/AVFoundation.h>
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *mainButton;
 
