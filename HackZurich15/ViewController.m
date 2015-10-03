@@ -9,6 +9,7 @@
 #import "ViewController.h"
 
 @interface ViewController ()
+@property (weak, nonatomic) IBOutlet UIButton *mainButton;
 
 
 @end
@@ -18,6 +19,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    
+    CABasicAnimation* animation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
+    animation.fromValue = [NSNumber numberWithFloat:0.0f];
+    animation.toValue = [NSNumber numberWithFloat: 2*M_PI];
+    animation.duration = 10.0f;
+    animation.repeatCount = INFINITY;
+    [self.mainButton.layer addAnimation:animation forKey:@"SpinAnimation"];
     
     // Do any additional setup after loading the view, typically from a nib.
 }
