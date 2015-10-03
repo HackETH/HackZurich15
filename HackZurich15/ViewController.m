@@ -78,9 +78,9 @@ BOOL looper[numberOfTypes][(int)(roundTime/refreshInterval)];
     
 }
 
-- (void)pulse {
+- (void)pulse:(int)num {
     UIImageView *ring =[[UIImageView alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2-116,self.view.frame.size.height/2-116,232,232)];
-    ring.image=[UIImage imageNamed:@"Ring"];
+    ring.image=[UIImage imageNamed:[NSString stringWithFormat:@"Ring%d",num]];
     [self.view addSubview:ring];
     [UIView animateWithDuration:1.0 delay:0 options:UIViewAnimationOptionCurveLinear  animations:^{
         [ring setFrame:CGRectMake(self.view.frame.size.width/2-250,self.view.frame.size.height/2-250,500,500)];
@@ -115,13 +115,12 @@ BOOL looper[numberOfTypes][(int)(roundTime/refreshInterval)];
 }
 - (IBAction)buttonpress:(id)sender {
     [self startSpinning];
-    [self pulse];
     [self recordSound];
     [self playSound:currentType];
 }
 
 - (void)playSound:(int) soundType {
-    [self pulse];
+    [self pulse:soundType];
     dispatch_async(_metronomeQueue, ^{
         [[AudioSamplePlayer sharedInstance] playAudioSample:@"snares"];
 
@@ -160,7 +159,7 @@ BOOL looper[numberOfTypes][(int)(roundTime/refreshInterval)];
     
     for (int x=0;x<numberOfTypes;x++) {
         if (looper[x][currentBar]) {
-            [self playSound:&x];
+            [self playSound:x];
         }
     }
     
