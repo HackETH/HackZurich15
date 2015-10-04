@@ -169,7 +169,7 @@ double v[WINDOW_SIZE];
         CABasicAnimation* animation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
         animation.fromValue = [NSNumber numberWithFloat:0.0f+offset];
         animation.toValue = [NSNumber numberWithFloat: 2*M_PI];
-        animation.duration = self.roundTime*(1 - offset/(2*M_PI));
+        animation.duration = self.roundTime*(1 - offset/(2*M_PI))+0.1;
         
         [self.mainButton.layer addAnimation:animation forKey:@"SpinAnimation"];
         self.circleTimer = [NSTimer scheduledTimerWithTimeInterval:self.roundTime*(1 - offset/(2*M_PI)) target:self selector:@selector(stopSpinning:) userInfo:nil repeats:NO];
@@ -273,7 +273,7 @@ double v[WINDOW_SIZE];
 }
 - (IBAction)buttonpress:(id)sender {
     
-    if (!isRecording)
+    if (!isRecording && sender!=self)
     {
         if (self.wantsToRecord && maxNumberOfHitsPerBar*self.nBars-currentHit < maxNumberOfHitsPerBar/64) // If close to start of recording
             [self recordSound];
@@ -283,14 +283,21 @@ double v[WINDOW_SIZE];
     else
     {
         [self playSound:currentType];
+        if (isRecording){
+            [self recordSound];
 
-        [self recordSound];
+        }
     }
 }
 
 - (IBAction)bpmUp:(id)sender {
     if (!isRecording) {
         [self setBpmAndUpdateTimer:self.bpm+bpmStep];
+        //fa
+        if (self.bpm >= 140) {
+            [self upArrowButton].hidden = YES;
+        }
+        self.downArrowButton.hidden = NO;
         [self.bpmLabel setText:[NSString stringWithFormat:@"%d",self.bpm]];
     }
     
@@ -298,6 +305,10 @@ double v[WINDOW_SIZE];
 - (IBAction)bpmDown:(id)sender {
     if (!isRecording) {
         [self setBpmAndUpdateTimer:self.bpm-bpmStep];
+        if (self.bpm <= 80) {
+            [self downArrowButton].hidden = YES;
+        }
+        self.upArrowButton.hidden = NO;
         [self.bpmLabel setText:[NSString stringWithFormat:@"%d",self.bpm]];
     }
     
@@ -367,7 +378,7 @@ double v[WINDOW_SIZE];
     }];
 }
 - (void)isRecordingAnimation {
-    
+    self.wantsAlready = NO;
     self.downArrowButton.enabled = NO;
     self.upArrowButton.enabled = NO;
     
